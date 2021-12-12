@@ -1,7 +1,14 @@
+import memesData from "../memesData";
+
 function Meme() {
+  function handleClick() {
+    let random = Math.floor(Math.random() * memesData.data.memes.length - 1);
+    let memeUrl = memesData.data.memes[random].url;
+    console.log(memeUrl);
+  }
   return (
     <main className="meme-container">
-      <form action="" className="meme--form">
+      <div action="" className="meme--form">
         <div className="meme--flexform">
           <input type="text" className="meme--input" placeholder="Top Text" />
           <input
@@ -9,9 +16,11 @@ function Meme() {
             className="meme--input"
             placeholder="Bottom Text"
           />
-          <button className="meme--button">Get a new meme image 🖼</button>
+          <button onClick={handleClick} className="meme--button">
+            Get a new meme image 🖼
+          </button>
         </div>
-      </form>
+      </div>
     </main>
   );
 }
