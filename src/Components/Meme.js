@@ -2,7 +2,7 @@ import memesData from "../memesData";
 
 function Meme() {
   function handleClick() {
-    let random = Math.floor(Math.random() * memesData.data.memes.length - 1);
+    let random = Math.floor(Math.random() * memesData.data.memes.length);
     let memeUrl = memesData.data.memes[random].url;
     console.log(memeUrl);
   }
