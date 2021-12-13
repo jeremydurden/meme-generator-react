@@ -12,10 +12,12 @@ function Meme() {
   const [allMemeImages, setAllMemeImages] = useState(memesData);
 
   function getMemeImage() {
-    let random = Math.floor(Math.random() * allMemeImages.data.memes.length);
+    const memesArray = allMemeImages.data.memes;
+    const randomNumber = Math.floor(Math.random() * memesArray.length);
+    const url = memesArray[randomNumber].url;
     setMeme((prevState) => ({
       ...prevState,
-      randomImage: allMemeImages.data.memes[random].url,
+      randomImage: url,
     }));
   }
   return (
