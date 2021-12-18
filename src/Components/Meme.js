@@ -20,41 +20,48 @@ function Meme() {
       randomImage: url,
     }));
   }
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setMeme((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  }
+
+  console.log(meme, "meme");
+
   return (
     <main className="meme--container">
       <div action="" className="meme--form">
         <div className="meme--flexform">
-          <input type="text" className="meme--input" placeholder="Top Text" />
+          <input
+            type="text"
+            className="meme--input"
+            placeholder="Top Text"
+            onChange={handleChange}
+            name="topText"
+            value={meme.topText}
+          />
           <input
             type="text"
             className="meme--input"
             placeholder="Bottom Text"
+            onChange={handleChange}
+            name="bottomText"
+            value={meme.bottomText}
           />
           <button onClick={getMemeImage} className="meme--button">
             Get a new meme image 🖼
           </button>
         </div>
       </div>
-      <img className="meme--image" src={`${meme.randomImage}`} alt="" />
+      <div className="meme--image__container">
+        <img className="meme--image" src={`${meme.randomImage}`} alt="" />
+        <h2 className="meme--text top">{meme.topText}</h2>
+        <h2 className="meme--text bottom">{meme.bottomText}</h2>
+      </div>
     </main>
   );
 }
 
 export default Meme;
-
-/**
- * Challenge: Update our state to save the meme-related
- * data as an object called `meme`. It should have the
- * following 3 properties:
- * topText, bottomText, randomImage.
- *
- * The 2 text states can default to empty strings for now,
- * amd randomImage should default to "http://i.imgflip.com/1bij.jpg"
- *
- * Next, create a new state variable called `allMemeImages`
- * which will default to `memesData`, which we imported above
- *
- * Lastly, update the `getMemeImage` function and the markup
- * to reflect our newly reformed state object and array in the
- * correct way.
- */
