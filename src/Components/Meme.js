@@ -19,10 +19,19 @@ function Meme() {
     }));
   }
 
+  // useEffect(() => {
+  //   fetch("https://api.imgflip.com/get_memes")
+  //     .then((response) => response.json())
+  //     .then((data) => setMemes(data.data.memes));
+  // }, []);
+
   useEffect(() => {
-    fetch("https://api.imgflip.com/get_memes")
-      .then((response) => response.json())
-      .then((data) => setMemes(data.data.memes));
+    async function getMemes() {
+      const res = await fetch("https://api.imgflip.com/get_memes");
+      const data = await res.json();
+      setMemes(data.data.memes);
+    }
+    getMemes();
   }, []);
 
   function handleChange(e) {

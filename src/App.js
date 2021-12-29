@@ -1,7 +1,6 @@
 import Header from "./Components/Header";
 import Meme from "./Components/Meme";
 import "./styles.css";
-import "./memesData.js";
 
 function App() {
   return (
